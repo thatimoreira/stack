@@ -1,28 +1,25 @@
-#include <stdio.c>
-#include <stdlib.c>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define MAX 10
 
-int count;  // counts the number of elements in the stack
-
-count = 0;
-
 // Creating the stack
-typedef struct stack    st
+typedef struct stack
 {
-    int items[MAX];
-    int top;
+    int         items[MAX];
+    int         top;
 } stack;
 
+static int  count; // counts the number of elements in the stack
 
 // Creating an empty stack
-void    createEmptyStack(st *s)
+void    createEmptyStack(stack *s)
 {
     s->top = -1;
 }
 
 // Checking if the stack is full
-int isFull(st *s)
+int isFull(stack *s)
 {
     if (s->top == MAX -1)
         return (1);
@@ -31,7 +28,7 @@ int isFull(st *s)
 }
 
 // Checking if the stack is empty
-int isEmpty(st *s)
+int isEmpty(stack *s)
 {
     if (s->top == -1)
         return (1);
@@ -40,7 +37,7 @@ int isEmpty(st *s)
 }
 
 // Adding elements to the stack
-void    push(st *s, int newElement)
+void    push(stack *s, int newElement)
 {
     if (isFull(s))
         printf("Stack is FULL\n");
@@ -54,7 +51,7 @@ void    push(st *s, int newElement)
 }
 
 // Removing elements of the stack
-void    pop(st *s)
+void    pop(stack *s)
 {
     if (isEmpty(s))
         printf("Stack is EMPTY\n");
@@ -67,12 +64,12 @@ void    pop(st *s)
 }
 
 // Printing stack elements
-void printStack(st *s)
+void printStack(stack *s)
 {
     int i;
 
     i = 0;
-    printf("Stack: "):
+    printf("Stack: ");
     while (i < count)
         printf("%d ", s->items[i++]);
     printf("\n");
@@ -80,11 +77,11 @@ void printStack(st *s)
 
 int main(void)
 {
-    st *s;
+    stack *s;
     
-    s = (st *)malloc(sizeof(st));
+    s = (stack *)malloc(sizeof(stack));
     if (s == NULL)
-        return (NULL);
+        return (-1);
     createEmptyStack(s);
 
     push(s, 1);
