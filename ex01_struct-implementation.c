@@ -30,7 +30,7 @@ int isFull(st *s)
         return (0);
 }
 
-// Chacking if the stack is empty
+// Checking if the stack is empty
 int isEmpty(st *s)
 {
     if (s->top == -1)
@@ -51,4 +51,47 @@ void    push(st *s, int newElement)
         count++;
     }
 
+}
+
+// Removing elements of the stack
+void    pop(st *s)
+{
+    if (isEmpty(s))
+        printf("Stack is EMPTY\n");
+    else
+    {
+        printf("Popped %d\n", s->items[s->top]);
+        s->top--;
+        count--;
+    }
+}
+
+// Printing stack elements
+void printStack(st *s)
+{
+    int i;
+
+    i = 0;
+    printf("Stack: "):
+    while (i < count)
+        printf("%d ", s->items[i++]);
+    printf("\n");
+}
+
+int main(void)
+{
+    st *s;
+    
+    s = (st *)malloc(sizeof(st));
+    if (s == NULL)
+        return (NULL);
+    createEmptyStack(s);
+
+    push(s, 1);
+    push(s, 11);
+    push(s, 3);
+    push(s, 21);
+    push(s, 14);
+    printStack(s);
+    return (0);
 }
